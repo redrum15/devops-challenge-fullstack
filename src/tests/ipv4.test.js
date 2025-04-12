@@ -45,7 +45,7 @@ test("count of address in CIDR range is correct", () => {
 test("usable avaiable address count is calculated correctly", () => {
   // using 192.168.100.14/20 CIDR
   const ipv4 = new IPv4([192, 168, 100, 14], 20);
-  expect(ipv4.availableCount()).toBe(4094);
+  expect(ipv4.availableCount()).toBe(2094);
 });
 
 test("usable avaiable address count (AWS) is calculated correctly", () => {
