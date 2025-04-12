@@ -15,13 +15,13 @@ jobs:
           echo "Target branch: ${{ github.base_ref }}"
           echo "Source branch: ${{ github.head_ref }}"
 
-          if [[ "${{ github.base_ref }}" == "stage " &&  "${{ github.head_ref }}" != "devel"]] 
+          if [[ "${{ github.base_ref }}" == "stage" ]]  &&  [[" ${{ github.head_ref }}" != "devel" ]] 
           then
             echo "Invalid branch source"
             exit 1
           fi
 
-          if [[ "${{ github.base_ref }}" == "prod " && "${{ github.head_ref}}" != "stage"]] 
+          if [[ "${{ github.base_ref }}" == "prod" ]] && [[ "${{ github.head_ref}}" != "stage" ]] 
           then
             echo "Invalid branch source"
             exit 1
