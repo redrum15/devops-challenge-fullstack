@@ -1,0 +1,28 @@
+name: Verify Source Branch
+
+on: 
+  pull_request:
+    branches:
+      - stage
+      - prod 
+
+jobs:
+  verify-branch:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Check if PR source is valid
+        run : |
+          echo "Target barnch: ${{ github.base_ref }}"
+          echo "Source barnch: ${{ github.head_ref }}"
+
+          if [ "${{ github.base_ref }}" = "stage "] && [ "${{ github.head_ref}}" != "devel"]; then
+            echo "Invalid branch source"
+            exit 1
+          fi
+
+          if [ "${{ github.base_ref }}" = "prod "] && [ "${{ github.head_ref}}" != "stage"]; then
+            echo "Invalid branch source"
+            exit 1
+          fi
+
+          echo "Valid PR"
